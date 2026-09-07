@@ -124,6 +124,42 @@
 
 ---
 
+## BSL-серверы (справка платформы и проверка кода)
+
+### 1. bsl-context (Regsorm) — валидация BSL + справка
+
+Локальный HTTP MCP-сервер справки платформы 1С и статической проверки BSL относительно конкретной версии платформы. Написан на **Rust**.
+
+- **Ссылка:** https://github.com/Regsorm/bsl-context
+- **Источник API:** файл `shcntx_ru.hbk` из установленной платформы (`C:\Program Files\1cv8\<версия>\bin\shcntx_ru.hbk`) — не входит в репозиторий
+- **Возможности:** `bsl-parse` (tree-sitter), `sdbl-parse` (язык запросов), `bsl-validator` (проверка выражений и правил оптимальности запросов), `lite-index` (индекс имён конфигурации), `symbol-source`
+- **Запуск:** `cargo build --release` → `target/release/bsl-context-rs.exe`; конфиг `configs/config.toml` (`host`, `port` 8007, `platform_path`)
+- **Транспорт:** HTTP MCP (axum + rmcp)
+- **Статья на Infostart:** https://infostart.ru/1c/articles/2698363/
+
+### 2. alkoleft/mcp-bsl-platform-context — самый популярный (★181)
+
+Java-аналог «Синтакс-помощника» для ИИ-агентов. MIT.
+
+- **Ссылка:** https://github.com/alkoleft/mcp-bsl-platform-context (документация — в папке `documentation/`)
+- **Транспорт:** `stdio` (по умолчанию) или `sse` (`--mode sse --port 8080`)
+- **Инструменты:** `search`, `info`, `getMember`, `getMembers`, `getConstructors`
+- **Запуск (Windows):** `java -Dfile.encoding=UTF-8 -jar mcp-bsl-context-0.3.0.jar --platform-path "C:\Program Files\1cv8\8.3.27.1606"`
+- **Требования:** Java 17+, платформа 1С 8.3.20+
+
+### 3. BSL Language Server (1c-syntax) — LSP + режим MCP
+
+Официальный языковой сервер 1С: диагностики, автодополнение, форматирование, переход к определению.
+
+- **Ссылка:** https://github.com/1c-syntax/bsl-language-server
+- **Документация MCP:** https://1c-syntax.github.io/bsl-language-server/features/McpMode/
+- **Запуск MCP:** `java -jar bsl-language-server.jar mcp --protocol stdio|sse|streamable`
+- **Инструменты MCP:** `hover`, `definition`, `type_info`, `global_member_info`, `global_member_search`
+
+> **Важно про `opencode.json`:** путь `tools/bsl-context/bsl-context.jar` — заглушка (папки нет, сервер Regsorm — это Rust, не Java-jar). Сервер отключён (`enabled: false`), для включения нужно скорректировать конфиг под один из вариантов выше.
+
+---
+
 ## Ресурсы
 
 - Каталог: https://aitools1c.dev/tools/
