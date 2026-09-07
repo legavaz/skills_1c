@@ -1,0 +1,9 @@
+{
+  "name": "Расширение с версией и поставщиком",
+  "params": { "name": "РасшВерсия", "outputDir": "cfe" },
+  "args_extra": ["-Version", "1.0.0.1", "-Vendor", "ТестКомпания"],
+  "validatePath": "cfe",
+  "expect": {
+    "files": ["cfe/Configuration.xml"]
+  }
+}

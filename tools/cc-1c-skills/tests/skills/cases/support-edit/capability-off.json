@@ -1,0 +1,15 @@
+{
+  "name": "Capability off: вся конфа read-only",
+  "setup": "fixture:g0",
+  "params": {
+    "path": "Configuration.xml"
+  },
+  "args_extra": [
+    "-Capability",
+    "off"
+  ],
+  "expect": {
+    "stdoutContains": "ВЫКЛЮЧЕНА"
+  },
+  "skipPlatformVerify": "фикстура синтетическая: рукотворный Ext/ParentConfigurations.bin платформа не принимает"
+}

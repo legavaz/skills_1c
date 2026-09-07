@@ -1,0 +1,15 @@
+{
+  "name": "Set off-support: объект снят с поддержки",
+  "setup": "fixture:g0",
+  "params": {
+    "path": "Catalogs/Locked.xml"
+  },
+  "args_extra": [
+    "-Set",
+    "off-support"
+  ],
+  "expect": {
+    "stdoutContains": "снят с поддержки"
+  },
+  "skipPlatformVerify": "фикстура синтетическая: рукотворный Ext/ParentConfigurations.bin платформа не принимает"
+}

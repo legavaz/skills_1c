@@ -1,0 +1,9 @@
+{
+  "name": "Расширение-дополнение (AddOn)",
+  "params": { "name": "Дополнение", "outputDir": "cfe" },
+  "args_extra": ["-Purpose", "AddOn"],
+  "validatePath": "cfe",
+  "expect": {
+    "files": ["cfe/Configuration.xml"]
+  }
+}

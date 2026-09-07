@@ -1,0 +1,46 @@
+{
+  "name": "Доп. аргументы доходят до самой сборки EPF (fake platform)",
+  "osOnly": "win32",
+  "preRun": [
+    {
+      "script": "epf-init/scripts/init",
+      "args": {
+        "-Name": "Тест",
+        "-SrcDir": "{workDir}/src"
+      }
+    },
+    {
+      "writeFile": {
+        "path": "fake.cmd",
+        "content": "@echo off\r\necho ARGS: %*\r\nexit /b 0\r\n"
+      }
+    },
+    {
+      "writeFile": {
+        "path": "ib/1Cv8.1CD",
+        "content": "fake infobase\n"
+      }
+    }
+  ],
+  "args_extra": [
+    "-V8Path",
+    "{workDir}\\fake.cmd",
+    "-InfoBasePath",
+    "{workDir}\\ib",
+    "-SourceFile",
+    "{workDir}\\src\\Тест.xml",
+    "-OutputFile",
+    "{workDir}\\build\\Тест.epf",
+    "-AdditionalV8Arguments",
+    "/UseHwLicenses+"
+  ],
+  "expect": {
+    "stdoutContains": [
+      "ARGS: DESIGNER",
+      "/LoadExternalDataProcessorOrReportFromFiles",
+      "/DisableStartupDialogs /UseHwLicenses+"
+    ]
+  },
+  "expectError": true,
+  "noSnapshot": "база указана явно, stub не создаётся; EPF фейком не собирается — проверяется командная строка"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Расширение-исправление (Patch)",
+  "params": { "name": "Исправление", "outputDir": "cfe" },
+  "args_extra": ["-Purpose", "Patch"],
+  "validatePath": "cfe",
+  "expect": {
+    "files": ["cfe/Configuration.xml"]
+  }
+}

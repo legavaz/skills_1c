@@ -1,0 +1,9 @@
+{
+  "name": "Расширение с явным префиксом",
+  "params": { "name": "РасшПрефикс", "outputDir": "cfe" },
+  "args_extra": ["-NamePrefix", "РП_"],
+  "validatePath": "cfe",
+  "expect": {
+    "files": ["cfe/Configuration.xml"]
+  }
+}

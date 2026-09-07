@@ -1,0 +1,11 @@
+{
+  "name": "Корректное расширение проходит валидацию",
+  "preRun": [
+    {
+      "script": "cfe-init/scripts/cfe-init",
+      "args": { "-Name": "Тест", "-OutputDir": "{workDir}/cfe", "-ConfigPath": "{workDir}" }
+    }
+  ],
+  "params": { "extensionPath": "cfe" },
+  "expect": { "stdoutContains": "=== Validation OK: Extension.Тест" }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Опечатка в имени типа — отказ, а не мусор в XML",
+  "input": {
+    "type": "Catalog",
+    "name": "Тест",
+    "attributes": [
+      "Поле: Srting(20)"
+    ]
+  },
+  "expectError": true,
+  "expect": {
+    "stderrContains": [
+      "Неизвестный тип 'Srting(20)'",
+      "Допустимые формы"
+    ]
+  }
+}

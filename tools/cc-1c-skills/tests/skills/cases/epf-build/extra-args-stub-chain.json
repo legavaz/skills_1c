@@ -1,0 +1,37 @@
+{
+  "name": "Доп. аргументы доходят до временной базы (fake platform)",
+  "osOnly": "win32",
+  "preRun": [
+    {
+      "script": "epf-init/scripts/init",
+      "args": {
+        "-Name": "Тест",
+        "-SrcDir": "{workDir}/src"
+      }
+    },
+    {
+      "writeFile": {
+        "path": "fake.cmd",
+        "content": "@echo off\r\necho ARGS: %*\r\nexit /b 1\r\n"
+      }
+    }
+  ],
+  "args_extra": [
+    "-V8Path",
+    "{workDir}\\fake.cmd",
+    "-SourceFile",
+    "{workDir}\\src\\Тест.xml",
+    "-OutputFile",
+    "{workDir}\\build\\Тест.epf",
+    "-AdditionalV8Arguments",
+    "/UseHwLicenses+"
+  ],
+  "expect": {
+    "stdoutContains": [
+      "ARGS: CREATEINFOBASE",
+      "/DisableStartupDialogs /UseHwLicenses+"
+    ]
+  },
+  "expectError": true,
+  "noSnapshot": "платформа фейковая и падает на первом запуске — проверяется её командная строка"
+}

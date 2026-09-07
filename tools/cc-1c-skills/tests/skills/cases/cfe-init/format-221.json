@@ -1,0 +1,26 @@
+{
+  "name": "Формат 2.21 (8.5): версия и xmlns:pal наследуются от базовой конфигурации",
+  "setup": "empty-config-221",
+  "params": {
+    "name": "Расш221",
+    "outputDir": "cfe"
+  },
+  "validatePath": "cfe",
+  "expect": {
+    "fileContains": [
+      {
+        "file": "cfe/Configuration.xml",
+        "text": [
+          "xmlns:lf=\"http://v8.1c.ru/8.2/managed-application/logform\" xmlns:pal=\"http://v8.1c.ru/8.1/data/ui/colors/palette\" xmlns:style=",
+          "version=\"2.21\"",
+          "<Caption/>",
+          "<ShortCaption/>"
+        ]
+      },
+      {
+        "file": "cfe/Languages/Русский.xml",
+        "text": "xmlns:lf=\"http://v8.1c.ru/8.2/managed-application/logform\" xmlns:pal=\"http://v8.1c.ru/8.1/data/ui/colors/palette\" xmlns:style="
+      }
+    ]
+  }
+}

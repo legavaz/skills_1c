@@ -1,0 +1,15 @@
+{
+  "name": "Capability on: возможность включена",
+  "setup": "fixture:g1",
+  "params": {
+    "path": "Configuration.xml"
+  },
+  "args_extra": [
+    "-Capability",
+    "on"
+  ],
+  "expect": {
+    "stdoutContains": "ВКЛЮЧЕНА"
+  },
+  "skipPlatformVerify": "фикстура синтетическая: рукотворный Ext/ParentConfigurations.bin платформа не принимает"
+}
