@@ -14,14 +14,12 @@
     "bsl-context": {
       "type": "local",
       "command": ["java", "-jar", "tools/bsl-context/bsl-context.jar"],
-      "enabled": false,
-      "description": "Справка платформы 1С и статическая проверка BSL (требует Java 17+)"
+      "enabled": false
     },
     "playwright": {
       "type": "local",
       "command": ["npx", "-y", "@anthropic-ai/mcp-server-playwright"],
-      "enabled": false,
-      "description": "Браузерная автоматизация для web-test (тестирование 1С через веб-клиент)"
+      "enabled": false
     }
   },
   "permission": {
