@@ -32,3 +32,6 @@ __pycache__/
 # Временные базы
 base/
 build/
+
+# Дубликаты навыков внутри исходного репозитория (рабочие лежат в .opencode/skills)
+tools/cc-1c-skills/.opencode/
