@@ -5,3 +5,33 @@ tools/cc-1c-skills/
 Thumbs.db
 Desktop.ini
 *.log
+
+# Временные файлы 1С
+*.bak
+*.cfg
+*.log
+*.txt
+!Описание задачи.txt
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Собранные обработки
+*.epf
+*.erf
+
+# Временные базы
+base/
+build/

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md"],
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+  "references": {
+    "1c-specs": {
+      "path": "tools/cc-1c-skills/docs",
+      "description": "Спецификации и гайды по XML-форматам 1С: EPF, ERF, формы, роли, СКД, XDTO, расширения, подсистемы"
+    }
+  },
+  "mcp": {
+    "bsl-context": {
+      "type": "local",
+      "command": ["java", "-jar", "tools/bsl-context/bsl-context.jar"],
+      "enabled": false,
+      "description": "Справка платформы 1С и статическая проверка BSL (требует Java 17+)"
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "-y", "@anthropic-ai/mcp-server-playwright"],
+      "enabled": false,
+      "description": "Браузерная автоматизация для web-test (тестирование 1С через веб-клиент)"
+    }
+  },
+  "permission": {
+    "bash": {
+      "1cv8*": "ask",
+      "git *": "allow",
+      "npm *": "allow",
+      "python *": "allow",
+      "*": "ask"
+    },
+    "external_directory": {
+      "tools/cc-1c-skills/**": "allow",
+      "*": "ask"
+    }
+  }
+}
