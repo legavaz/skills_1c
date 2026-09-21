@@ -19,6 +19,7 @@
 | `package.json`, `package-lock.json` | Зависимость `@opencode-ai/plugin` — набор SDK-типов для разработки плагинов opencode. Копируется в проект вместе со скиллами. |
 | `tui.json` | Конфигурация TUI: подключает плагин голосового ввода `@hxnnxs/opencode-voice`. |
 | `restore.ps1` | Скрипт развёртывания в проект. Читает манифест и локальные пути, копирует скиллы, генерирует конфиг, при необходимости ставит зависимости. |
+| `MODELS.md` | Справка по моделям: как переключать модель (`/models`), задавать уровень рассуждений (`reasoningEffort`), настраивать раздельные модели для Plan/Build. |
 | `README.md` | Этот документ. |
 
 ## Справочные материалы скиллов
@@ -85,6 +86,7 @@
 |---|---|
 | `-Project <путь>` | Обязательный. Проект, куда разворачивать |
 | `-Force` | Перезаписать существующий `.opencode\skills` |
+| `-Models` | Установить настройку моделей Plan/Build (агент `plan`/`build` в `opencode.jsonc`). Так же включается флагом `models.enabled` в `restore.config.json`. |
 
 > Включение/отключение компонентов и MCP-серверов — только через `restore.config.json`
 > (флаг `enabled`). Например, чтобы не ставить Playwright, переключите
@@ -95,3 +97,4 @@
 - Скиллы рассчитаны на размещение в проекте (путь `.opencode/skills/<имя>/scripts/...`).
 - `web-test` требует `npm install` (Playwright) — управляется флагом `playwright.enabled` в `restore.config.json`.
 - Плагин голосового ввода `@hxnnxs/opencode-voice` в `tui.json` — устанавливается по необходимости.
+- Модели Plan/Build настраиваются через `restore.ps1 -Models` или `models.enabled` в `restore.config.json`. Подробности — в `MODELS.md`.

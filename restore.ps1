@@ -12,10 +12,12 @@
 .EXAMPLE
   .\restore.ps1 -Project E:\project\edt
   .\restore.ps1 -Project E:\project\edt -Force
+  .\restore.ps1 -Project E:\project\edt -Models
 #>
 param(
   [Parameter(Mandatory=$true)][string]$Project,
-  [switch]$Force
+  [switch]$Force,
+  [switch]$Models
 )
 
 $ErrorActionPreference = "Stop"
@@ -61,6 +63,10 @@ if (-not $aib) {
 }
 
 $workspace = Join-Path $vault "Чертежи"
+
+# ---------- Модели Plan/Build ----------
+$ModelsComp = $Manifest.components | Where-Object { $_.id -eq "models" }
+$EnableModels = (Is-Enabled $ModelsComp) -or $Models
 
 # ---------- Выбор включённых MCP ----------
 $EnabledMCP = @{}
@@ -122,6 +128,13 @@ if (Is-Enabled ($Manifest.components | Where-Object { $_.id -eq "config" })) {
     $cfg.permission = @{ external_directory = @{ "$vault/**" = "allow" } }
   }
 
+  if ($EnableModels -and $ModelsComp) {
+    $cfg.agent = @{
+      plan  = @{ model = $ModelsComp.plan.model;  options = @{ reasoningEffort = $ModelsComp.plan.reasoningEffort } }
+      build = @{ model = $ModelsComp.build.model; options = @{ reasoningEffort = $ModelsComp.build.reasoningEffort } }
+    }
+  }
+
   $cfg | ConvertTo-Json -Depth 10 | Set-Content -Path $CfgDst -Encoding UTF8
 }
 
@@ -146,6 +159,11 @@ if (Is-Enabled ($Manifest.components | Where-Object { $_.id -eq "skills" })) {
   Write-Host "  Скиллов:        $skillCount -> $SkillsDst"
 }
 Write-Host "  Конфигурация:   $CfgDst"
+if ($EnableModels) {
+  Write-Host "  Модели:         Plan=$($ModelsComp.plan.model)@$($ModelsComp.plan.reasoningEffort), Build=$($ModelsComp.build.model)@$($ModelsComp.build.reasoningEffort)"
+} else {
+  Write-Host "  Модели:         не установлены (флаг -Models или enabled в манифесте)"
+}
 Write-Host ""
 Write-Host "MCP-серверы (включены):" -ForegroundColor Cyan
 foreach ($name in ($EnabledMCP.Keys | Sort-Object)) {

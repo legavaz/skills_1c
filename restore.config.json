@@ -20,12 +20,25 @@
                            "name":  "opencode.jsonc (генерация из шаблона)",
                            "enabled":  true
                        },
-                       {
-                           "id":  "playwright",
-                           "name":  "Playwright для web-test (npm install)",
-                           "enabled":  false
-                       }
-                   ],
+{
+                            "id":  "playwright",
+                            "name":  "Playwright для web-test (npm install)",
+                            "enabled":  false
+                        },
+                        {
+                            "id":  "models",
+                            "name":  "Модели Plan/Build (agent в opencode.jsonc)",
+                            "enabled":  false,
+                            "plan":  {
+                                         "model":  "opencode-go/deepseek-v4-flash",
+                                         "reasoningEffort":  "high"
+                                     },
+                            "build":  {
+                                         "model":  "opencode-go/deepseek-v4-flash",
+                                         "reasoningEffort":  "low"
+                                     }
+                        }
+                    ],
     "mcpServers":  {
                        "1c":  {
                                   "name":  "1С (remote :6003)",
