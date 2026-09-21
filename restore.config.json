@@ -1,0 +1,51 @@
+﻿{
+    "components":  [
+                       {
+                           "id":  "skills",
+                           "name":  "Скиллы 1С (skills/)",
+                           "enabled":  true
+                       },
+                       {
+                           "id":  "package",
+                           "name":  "package.json + package-lock.json (плагин @opencode-ai/plugin)",
+                           "enabled":  true
+                       },
+                       {
+                           "id":  "tui",
+                           "name":  "tui.json (голосовой ввод)",
+                           "enabled":  true
+                       },
+                       {
+                           "id":  "config",
+                           "name":  "opencode.jsonc (генерация из шаблона)",
+                           "enabled":  true
+                       },
+                       {
+                           "id":  "playwright",
+                           "name":  "Playwright для web-test (npm install)",
+                           "enabled":  false
+                       }
+                   ],
+    "mcpServers":  {
+                       "1c":  {
+                                  "name":  "1С (remote :6003)",
+                                  "enabled":  true
+                              },
+                       "edt":  {
+                                   "name":  "1C:EDT (remote :8765)",
+                                   "enabled":  true
+                               },
+                       "obsidian":  {
+                                        "name":  "Obsidian (mcpvault)",
+                                        "enabled":  true
+                                    },
+                       "excel":  {
+                                     "name":  "Excel (uvx)",
+                                     "enabled":  true
+                                 },
+                       "dxf":  {
+                                   "name":  "DXF (aiblueprint-mcp)",
+                                   "enabled":  true
+                               }
+                   }
+}
