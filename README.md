@@ -47,10 +47,16 @@
 определяются автоматически или указываются в `restore.local.json`):
 
 - **OpenCode** — глобальная установка `opencode-ai`.
+  - Документация: <https://opencode.ai>
+  - Установка: `npm i -g opencode-ai` (источник: <https://www.npmjs.com/package/opencode-ai>)
 - **mcpvault** — для MCP Obsidian (`@bitbonsai/mcpvault`).
+  - Установка: `npm i -g @bitbonsai/mcpvault` (источник: <https://www.npmjs.com/package/@bitbonsai/mcpvault>)
 - **uvx** — пакет `uv` для MCP Excel (`excel-mcp-server`).
-- **aiblueprint-mcp.exe** — для MCP DXF. Локальный исполняемый файл, путь задаётся в `restore.local.json`.
-- **Remote MCP `1c` (:6003)** и **`edt` (:8765)** — внешние серверы, должны быть запущены отдельно.
+  - Документация uv: <https://docs.astral.sh/uv/>
+  - Установка: `pip install uv` или инсталлятор с <https://github.com/astral-sh/uv>
+  - MCP-сервер: `uvx excel-mcp-server` (источник: <https://pypi.org/project/excel-mcp-server/>)
+- **aiblueprint-mcp.exe** — для MCP DXF. Локальный исполняемый файл, путь задаётся в `restore.local.json`. Источник устанавливается вручную на машине (в архиве не распространяется).
+- **Remote MCP `1c` (:6003)** и **`edt` (:8765)** — внешние серверы, должны быть запущены отдельно (установка описана в их собственной документации).
 
 ## Восстановление в проекте
 
